@@ -16,6 +16,13 @@ module.exports = class {
         this.add(value)
       }     
     }
+    Object.prototype.forEach = function(cb, op) {
+      let i = 0
+      while (i < this.items.length) {
+        console.log(this.items[i].getValue.call(op))
+        i++
+      }
+    }
   }
 
   add(data) {
