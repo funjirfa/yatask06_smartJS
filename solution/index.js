@@ -16,13 +16,6 @@ module.exports = class {
         this.add(value)
       }     
     }
-    Object.prototype.forEach = function(cb, op) {
-      let i = 0
-      while (i < this.items.length) {
-        console.log(this.items[i].getValue.call(op))
-        i++
-      }
-    }
   }
 
   add(data) {
@@ -67,5 +60,11 @@ module.exports = class {
 
   has(data) {
     return !!this.items.find((item) => item === data)
+  }
+
+  forEach(fn, data) {
+    for (const item of this.items) {
+      fn.bind(data)(item)
+    }
   }
 }
